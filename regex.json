@@ -463,13 +463,9 @@
   },
   "DC": {
     "District of Columbia": {
-      "regex": [
-        "none"
-      ],
+      "regex": [],
       "fips": "11001",
-      "formats": [
-        "none"
-      ]
+      "formats": []
     }
   },
   "WI": {
@@ -17880,13 +17876,9 @@
       "formats": []
     },
     "Prince Wales Hyder": {
-      "regex": [
-        "none"
-      ],
+      "regex": [],
       "fips": "02198",
-      "formats": [
-        "none"
-      ]
+      "formats": []
     },
     "Hoonah Angoon": {
       "regex": [],
