@@ -26,4 +26,13 @@ def load_apns():
             APNS.append(apn)
 
 
+def lookup(state=None, county=None):
+    if state is None or county is None:
+        print "lookup() requires state and county"
+    else:
+        for obj in APNS:
+            if obj.state_abbr == state:
+                print obj
+
+
 load_apns()
