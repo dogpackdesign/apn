@@ -4,9 +4,9 @@ from datetime import datetime
 
 def main():
     start = datetime.now()
-    lookup = apn.lookup('Washington', 'King')
+    # lookup = apn.lookup('Washington', 'King')
+    print apn.validate('123456-1234')
     end = datetime.now()
-    print lookup
     print end - start
 
 
