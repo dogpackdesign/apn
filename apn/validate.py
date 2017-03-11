@@ -15,8 +15,9 @@ def validate(apn_input, state=None, county=None):
             state_field = 'state_abbrev'
         else:
             fuzzy_state = max(APNS, key=lambda x: fuzz.ratio(state, x.state)).state
-            if fuzz.ratio(state, fuzzy_state) < 80:
-                raise Exception('Invalid input state: ' + state)
+            state_ratio = fuzz.ratio(state.lower(), fuzzy_state.lower())
+            if state_ratio < 80:
+                raise Exception('Invalid input state: ' + state + '. Fuzz Ratio: ' + str(state_ratio))
             state = fuzzy_state
             state_field = 'state'
         state_sub = filter(lambda x: state == getattr(x, state_field), APNS)
@@ -27,8 +28,9 @@ def validate(apn_input, state=None, county=None):
     county_sub = []
     if county is not None and state_sub:
         fuzzy_county = max(state_sub, key=lambda x: fuzz.ratio(county, x.county)).county
-        if fuzz.ratio(county, fuzzy_county) < 80:
-            raise Exception('Invalid input county: ' + county)
+        county_ratio = fuzz.ratio(county.lower(), fuzzy_county.lower())
+        if county_ratio < 80:
+            raise Exception('Invalid input county: ' + county + '. Fuzz Ratio: ' + str(county_ratio))
         county = fuzzy_county
         county_field = 'county'
         county_sub = filter(lambda x: county == getattr(x, county_field), state_sub)
