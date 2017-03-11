@@ -1,13 +1,11 @@
 from datetime import datetime
 
-from apn import apn
+from apn import validate
 
 
 def main():
     start = datetime.now()
-    lookup = apn.lookup('Washington', 'King')
-    print lookup
-    # print apn.validate('123456-1234')
+    print validate.validate('123456-1234')
     end = datetime.now()
     print end - start
 
