@@ -3,6 +3,7 @@ import re
 import sre_constants
 
 import jellyfish
+from fuzzywuzzy import process
 from pkg_resources import resource_stream
 
 APNS = []
@@ -29,6 +30,8 @@ def load_apns():
 
 
 def lookup(state=None, county=None):
+
+    [x for x in APNS if x.state_field == state and x.county == county]
     if state is None:
         if ABBR_RE.match(state):
             state = state.upper()
