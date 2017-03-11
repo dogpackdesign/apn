@@ -7,7 +7,7 @@ from apn import validate, lookup
 def main():
     start = datetime.now()
     # print validate.validate('123456-1234')
-    results = lookup.lookupken()
+    results = lookup.lookup()
     print results
     end = datetime.now()
     print end - start
