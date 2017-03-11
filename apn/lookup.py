@@ -30,22 +30,38 @@ def lookup(state=None, county=None):
 
 
 def lookupken(state=None, county=None):
-    results = []
-    for obj in APNS:
+    if county and state is False:
+        print "Lookup Error: Need to specify what state the county resides in."
+    else:
         if state:
-            if obj.state_abbrev == state or obj.state == state:
-                if county:
-                    if obj.county == county:
-                        results.append(obj.apn_format)
-                        print obj.state, obj.county, obj.apn_format
+            if county:
+                results = {state: {county: []}}
+                for obj in APNS:
+                    if obj.state == state or obj.state_abbrev == state:
+                        if obj.county == county:
+                            results[state][county].append(obj.apn_format)
+                        else:
+                            pass
                     else:
                         pass
-                else:
-                    results.append(obj.apn_format)
-                    print obj.state, obj.county, obj.apn_format
             else:
-                pass
+                results = {state: {}}
+                for obj in APNS:
+                    if obj.state == state or obj.state_abbrev == state:
+                        if obj.county in results[state]:
+                            results[state][obj.county].append(obj.apn_format)
+                        else:
+                            results[state][obj.county] = [obj.apn_format]
+                    else:
+                        pass
         else:
-            results.append(obj.apn_format)
-            print obj.state, obj.county, obj.apn_format
-    return results
+            results = {}
+            for obj in APNS:
+                if obj.state in results:
+                    if obj.county in results[obj.state]:
+                        results[obj.state][obj.county].append(obj.apn_format)
+                    else:
+                        results[obj.state][obj.county] = [obj.apn_format]
+                else:
+                    results[obj.state] = {obj.county: [obj.apn_format]}
+        return results
