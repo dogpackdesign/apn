@@ -1,9 +1,15 @@
-from apn import apn
+
+from datetime import datetime
+
+from apn import validate
 
 
 def main():
-    print apn.lookup("WA", "King")
+    start = datetime.now()
+    print validate.validate('123456-1234')
+    end = datetime.now()
+    print end - start
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
