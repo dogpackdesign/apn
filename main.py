@@ -1,6 +1,5 @@
-from datetime import datetime
 
-from apn import validate, apn
+from apn import validate, lookup
 import build
 
 
