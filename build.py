@@ -2,8 +2,6 @@ import os
 import pickle
 import sqlite3
 
-import jellyfish
-
 PWD = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -21,8 +19,6 @@ def pickle_data():
 
     apns_to_add = []
     for row in c:
-        row['county_name_metaphone'] = jellyfish.metaphone(row['county'])
-        row['state_name_metaphone'] = jellyfish.metaphone(row['state'])
         apns_to_add.append(row)
 
     pkl_path = os.path.abspath(os.path.join(PWD, 'apn', 'apns.pkl'))
