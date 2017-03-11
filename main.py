@@ -1,7 +1,7 @@
 from apn import apn
 
 def main():
-    apn.lookup("WA", "King")
+    print apn.lookup("WA", "King")
 
 
 if __name__ == "__main__":
