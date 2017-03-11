@@ -1,5 +1,6 @@
 from apn import apn
 
+
 def main():
     print apn.lookup("WA", "King")
 
