@@ -1,29 +1,35 @@
 import re
 import sre_constants
-from apn import APNS
+
+from fuzzywuzzy import fuzz
+
+from apn import APNS, ABBR_RE
 
 
 def validate(apn_input, state=None, county=None):
-    regex_add = []
-    if state and county is not None:
-        for apn in APNS:
-            if state == getattr(apn, 'state_abbrev') and county == getattr(apn, 'county'):
-                regex_add.append(re.compile(apn.apn_regex))
+    # state stuff
+    state_sub = []
+    if state is not None:
+        if ABBR_RE.match(state):
+            state = state.upper()
+            state_field = 'state_abbrev'
+        else:
+            state = max(APNS, key=lambda x: fuzz.ratio(state, x.state)).state
+            state_field = 'state'
+        state_sub = filter(lambda x: state == getattr(x, state_field), APNS)
 
-    elif county is None and state is not None:
-        for apn in APNS:
-            if state == getattr(apn, 'state_abbrev'):
-                regex_add.append(re.compile(apn.apn_regex))
+    # county stuff
+    county_sub = []
+    if county is not None and state_sub:
+        county = max(state_sub, key=lambda x: fuzz.ratio(county, x.county)).county
+        county_field = 'county'
+        county_sub = filter(lambda x: county == getattr(x, county_field), state_sub)
 
-    elif state is None and county is None:
-        for apn in APNS:
-            try:
-                regex_add.append(re.compile(apn.apn_regex))
-            except sre_constants.error:
-                print 'ERROR:', apn.state, apn.county, apn.apn_regex
-                pass
-
-    if any(regex.match(apn_input) for regex in regex_add):
-        return True
-    else:
-        return False
+    apn_results = []
+    if county_sub:
+        try:
+            apn_results = filter(lambda x: re.compile(x.apn_regex).match(apn_input), county_sub)
+        except sre_constants as e:
+            print 'ERROR: poorly formatted REGEX'
+            pass
+    return apn_results
