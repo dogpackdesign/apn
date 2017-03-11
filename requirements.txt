@@ -1,2 +1,2 @@
+fuzzywuzzy==0.15.0
 jellyfish==0.5.6
-
