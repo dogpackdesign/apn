@@ -1,0 +1,5 @@
+1.0
+------
+
+-   WE'LL DO IT LIVE
+-   Added Python3.6 support
