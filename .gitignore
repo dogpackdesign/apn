@@ -2,6 +2,7 @@
 ### Python template
 # Byte-compiled / optimized / DLL files
 .idea
+.pypirc
 __pycache__/
 *.py[cod]
 *$py.class
@@ -13,7 +14,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+dist
 downloads/
 eggs/
 .eggs/

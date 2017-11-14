@@ -17,7 +17,6 @@ setup(
     license="MIT",
     packages=find_packages(),
     package_data={'apn': ['data/*.pkl']},
-    install_requires=['python-Levenshtein==0.12.0', 'fuzzywuzzy==0.15.1', 'sqlalchemy==1.1.15'],
     entry_points={
         'console_scripts': ['apn = apn.cli.apn:runner']
     },
