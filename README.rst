@@ -6,7 +6,7 @@ Validate or lookup Assessor's Parcel Number (APN) formats for any given state/co
 Lookup or validate an APN format for
 a given county and/or state.
 
-.. image:: https://travis-ci.org/dogpackdesign/apn-formats.svg?branch=master
+.. image:: https://travis-ci.org/dogpackdesign/apn.svg?branch=master
     :target: https://travis-ci.org/profile/dogpackdesign
 
 Installation
