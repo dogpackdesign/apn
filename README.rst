@@ -2,11 +2,12 @@ apn
 ====================================================
 
 Validate or lookup Assessor's Parcel Number (APN) formats for any given state/county in the United States.
-------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Lookup or validate an APN format for
 a given county and/or state.
 
-|Build Status|
+.. image:: https://travis-ci.org/dogpackdesign/apn-formats.svg?branch=master
+    :target: https://travis-ci.org/profile/dogpackdesign
 
 Installation
 ------------
@@ -60,6 +61,3 @@ Development
 - Run ``python -m apn.cli.apn`` for console
 - Changes/improvements welcome!
 - To add data, please edit the apn.db Sqlite db and then run ``python build.py``
-
-.. |Build Status| image:: https://travis-ci.org/dogpackdesign/apn-formats.svg?branch=master
-   :target: https://travis-ci.org/profile/dogpackdesign

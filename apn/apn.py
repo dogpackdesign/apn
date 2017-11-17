@@ -1,8 +1,10 @@
 import pickle
 import re
-
-from fuzzywuzzy import process
 from pkg_resources import resource_stream
+try:
+    from fuzzywuzzy import process
+except ImportError:
+    pass
 
 ABBR_RE = re.compile(r'^[a-zA-Z]{2}$')
 APNS = []
