@@ -1,6 +1,8 @@
 apn
 ====================================================
 
+Note: These formats were valid in 2016. We can not guarantee that they are all valid today.
+
 Validate or lookup Assessor's Parcel Number (APN) formats for any given state/county in the United States.
 ----------------------------------------------------------------------------------------------------------
 Lookup or validate an APN format for
